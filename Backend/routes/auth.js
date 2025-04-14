@@ -7,21 +7,11 @@ const jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser');
 const JWT_SECRET = 'masknxanxlanla';
 
-const validate = [
-    body('name', 'Enter a valid name').isLength({min:3}),
-    body('email', 'Enter a valid Email').isEmail(),
-    body('password', 'password must be atleast 5 characters and alphanumeric').isLength({min:5}).isAlphanumeric(),
-]
 
 
 // Route 1 to create user
-router.post('/', validate, async (req, res) =>{
+router.post('/', async (req, res) =>{
     let success = false
-    const errors = validationResult(req);
-    if(!errors.isEmpty()){
-        return res.status(404).json({success, error:"Enter a strong password", errors: errors.array()})
-    }
-    
     try {
             // check wheather user exist!!
             let user = await User.findOne({email: req.body.email});
@@ -52,7 +42,6 @@ router.post('/', validate, async (req, res) =>{
         console.log(error.message)
         res.status(500).send("Some error occured")
     }
-    
     
 })
 
