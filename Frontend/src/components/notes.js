@@ -51,6 +51,9 @@ export default function Notes() {
           setNote({...note, [e.target.name]: e.target.value})
 
       }
+
+      const isDisabled = note.etitle.length < 3 || note.edescription.length < 3 || note.etag.length < 3;
+
       
   return (
     <>
@@ -75,7 +78,23 @@ export default function Notes() {
                       <label >Tag</label>
                       <input value={note.etag} type="text" name='etag' id='etag' onChange={handleChange} />
                   </div>
-                  <button disabled={note.etitle.length<3 || note.edescription.length<3 || note.etag.length<3 } type='submit' onClick={handleClick}>Update note</button>
+
+                  <button
+                    disabled={isDisabled}
+                    type="submit"
+                    onClick={handleClick}
+                    style={{
+                      color: 'black',
+                      backgroundColor: isDisabled ? '#ccc' : '#27e727',
+                      cursor: isDisabled ? 'not-allowed' : 'pointer',
+                      border: 'none',
+                      padding: '8px 16px',
+                      borderRadius: '5px',
+                    }}
+                  >
+                    Update note
+                  </button>
+
               </form>
               
             </div>

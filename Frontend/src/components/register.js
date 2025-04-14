@@ -51,7 +51,6 @@ export default function Register({host}) {
       const json = await response.json();
     
       if (json.success) {
-        // Save the token and redirect to home (auto-login)
         localStorage.setItem("token", json.jwtdata);
         navigate("/home");
       } else {

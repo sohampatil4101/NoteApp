@@ -37,7 +37,29 @@ export default function Addnote() {
             <label >Tag</label>
             <input type="text" value={note.tag} name='tag' id='tag' onChange={handleChange} />
         </div>
-        <button disabled={note.title.length<3 || note.description.length<3 || note.tag.length<3 } type='submit' style={{'color': 'black', 'backgroundColor': '#27e727'}} onClick={handleClick}>Add note</button>
+
+        <button
+            disabled={note.title.length < 3 || note.description.length < 3 || note.tag.length < 3}
+            type="submit"
+            onClick={handleClick}
+            style={{
+                color: 'black',
+                backgroundColor:
+                note.title.length < 3 || note.description.length < 3 || note.tag.length < 3
+                    ? '#ccc' 
+                    : '#27e727', 
+                cursor:
+                note.title.length < 3 || note.description.length < 3 || note.tag.length < 3
+                    ? 'not-allowed'
+                    : 'pointer',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '5px',
+            }}
+            >
+            Add note
+            </button>
+
     </form>
     </>
   )
