@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function Register({host}) {
-  const host = host
+  const url = host
   const navigate = useNavigate()
     const [credentials, setCredentials] = useState({
         name:"",
@@ -18,7 +18,7 @@ export default function Register({host}) {
 
     const handleSubmit = async(e) =>{
         e.preventDefault()        
-        const response = await fetch(`${host}/api/auths/`, {
+        const response = await fetch(`${url}/api/auths/`, {
             method: "POST", 
             headers: {
               "Content-Type": "application/json",
