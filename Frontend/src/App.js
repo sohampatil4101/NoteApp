@@ -9,6 +9,7 @@ import Login from './components/login.js';
 import Landingpage from './components/landingpage.js';
 
 function App() {
+  const host = process.env.REACT_APP_HOST || "http://localhost:5000"
   return (<>
   <NoteState>
   <BrowserRouter>
@@ -17,8 +18,8 @@ function App() {
           <Route path="/" element={<Landingpage />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register  host={host} />} />
+          <Route path="/login" element={<Login  host={host} />} />
         </Route>
       </Routes>
     </BrowserRouter>
